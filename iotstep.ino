@@ -5,14 +5,19 @@ byte sendData[14];
 void setup()
 {
   pinMode(LED,OUTPUT);
-  Serial.begin(9600);
+//Serial.begin(9600);
+  Serial1.begin(9600);
+  while (!Serial) {
+    ; // シリアルポートが開くのを待つ。
+  }
 }
 
 void loop()
 {
   // 受信処理
-  if(Serial.available() > 0){
-    rsvData = Serial.read();
+  if(Serial1.available() > 0){
+//    rsvData = Serial.read();
+    rsvData = Serial1.read();
     if(rsvData == 1){ 
       digitalWrite(LED, HIGH);
     }
@@ -40,8 +45,9 @@ void loop()
   sendData[11] = conpY;
   sendData[12] = conpZ;
   sendData[13] = airPress;
-  Serial.println(thumb);
-  Serial.write(thumb);
+  Serial1.write(thumb);
+  Serial1.write(child);
+  Serial1.write(kakato);
   //Serial.write(sendData,14);
 //  Serial.println(leftOrRight);
 //  Serial.println(child);
