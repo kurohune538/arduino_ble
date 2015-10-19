@@ -4,12 +4,13 @@ int leftOrRight,thumb,child,kakato,accelX,accelY,accelZ,gyroX,gyroY,gyroZ,conpX,
 byte sendData[14];
 void setup()
 {
-  pinMode(LED,OUTPUT);
 //Serial.begin(9600);
   Serial1.begin(9600);
-  while (!Serial) {
-    ; // シリアルポートが開くのを待つ。
-  }
+//  while (!Serial) {
+//    ; // シリアルポートが開くのを待つ。
+//  }
+  pinMode(LED,OUTPUT);
+
 }
 
 void loop()
@@ -31,28 +32,31 @@ void loop()
   thumb = analogRead(A0);
   child = analogRead(A1);
   kakato = analogRead(A2);
-  sendData[0] = leftOrRight;
-  sendData[1] = thumb;
-  sendData[2] = child;
-  sendData[3] = kakato;
-  sendData[4] = accelX;
-  sendData[5] = accelY;
-  sendData[6] = accelZ;
-  sendData[7] = gyroX;
-  sendData[8] = gyroY;
-  sendData[9] = gyroZ;
-  sendData[10] = conpX;
-  sendData[11] = conpY;
-  sendData[12] = conpZ;
-  sendData[13] = airPress;
+//  sendData[0] = leftOrRight;
+//  sendData[1] = thumb;
+//  sendData[2] = child;
+//  sendData[3] = kakato;
+//  sendData[4] = accelX;
+//  sendData[5] = accelY;
+//  sendData[6] = accelZ;
+//  sendData[7] = gyroX;
+//  sendData[8] = gyroY;
+//  sendData[9] = gyroZ;
+//  sendData[10] = conpX;
+//  sendData[11] = conpY;
+//  sendData[12] = conpZ;
+//  sendData[13] = airPress;
+  Serial1.write(leftOrRight);
   Serial1.write(thumb);
   Serial1.write(child);
   Serial1.write(kakato);
   //Serial.write(sendData,14);
 //  Serial.println(leftOrRight);
+//  Serial.println(thumb);
 //  Serial.println(child);
+//  Serial.println(kakato);
   //ウェイト
 
-  delay(100);
+  delay(500);
 }
 
