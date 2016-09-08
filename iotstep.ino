@@ -1,6 +1,6 @@
 const int LED = 13;
 int rsvData = 0;
-int leftOrRight,thumb,child,kakato,accelX,accelY,accelZ,gyroX,gyroY,gyroZ,conpX,conpY,conpZ,airPress = 0;
+int leftOrRight,thumb,child,kakato,accelX,accelY,accelZ = 0;
 byte sendData[14];
 void setup()
 {
@@ -9,8 +9,6 @@ void setup()
 //  while (!Serial) {
 //    ; // シリアルポートが開くのを待つ。
 //  }
-  pinMode(LED,OUTPUT);
-
 }
 
 void loop()
@@ -28,33 +26,29 @@ void loop()
   } 
 
   //センサー読み取り～送信
-  leftOrRight = 1;
+  leftOrRight = 0;
   thumb = analogRead(A0);
   child = analogRead(A1);
   kakato = analogRead(A2);
-//  sendData[0] = leftOrRight;
-//  sendData[1] = thumb;
-//  sendData[2] = child;
-//  sendData[3] = kakato;
-//  sendData[4] = accelX;
-//  sendData[5] = accelY;
-//  sendData[6] = accelZ;
-//  sendData[7] = gyroX;
-//  sendData[8] = gyroY;
-//  sendData[9] = gyroZ;
-//  sendData[10] = conpX;
-//  sendData[11] = conpY;
-//  sendData[12] = conpZ;
-//  sendData[13] = airPress;
+  accelX = analogRead(A3);
+  accelY = analogRead(A4);
+  accelZ = analogRead(A5);
+
   Serial1.write(leftOrRight);
   Serial1.write(thumb);
   Serial1.write(child);
   Serial1.write(kakato);
+  Serial1.write(accelX);
+  Serial1.write(accelY);
+  Serial1.write(accelZ);
   //Serial.write(sendData,14);
 //  Serial.println(leftOrRight);
 //  Serial.println(thumb);
 //  Serial.println(child);
 //  Serial.println(kakato);
+//  Serial.println(accelX);
+//  Serial.println(accelY);
+//  Serial.println(accelZ);
   //ウェイト
 
   delay(500);
